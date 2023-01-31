@@ -1,15 +1,25 @@
+using System.Windows.Forms;
+using System.Xml.Linq;
+
 namespace ROI
 {
     public partial class Form1 : Form
     {
         //define global variables
-        public int PCost,ClosingCost, DPaymentAmount, DPayment,AmortYears,MonthlyRent,Vacancy,GrossRentalIncome;
+        public int PCost, ClosingCost, DPaymentAmount, PropertyTax, InsuranceExpenses, MaintenanceExpenses, OtherExpenses, DPayment, AmortYears, MonthlyRent, Vacancy, NetRentalIncome, GrossRentalIncome;
         public double MortgageRate, ROI;
-        
-        
+
+
         public Form1()
         {
             InitializeComponent();
+            pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -19,8 +29,8 @@ namespace ROI
 
         private void label4_Click(object sender, EventArgs e)
         {
-         
-                    
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,6 +51,10 @@ namespace ROI
             MortgageRate_box.Text = "5";
             AmortYears_box.Text = "25";
             ClosingCost_box.Text = "5000";
+            PropertyTax_box.Text = "2500";
+            InsuranceExpenses_box.Text = "1000";
+            MaintenanceExpenses_box.Text = "2000";
+            OtherExpenses_box.Text = "500";
         }
 
 
@@ -50,6 +64,7 @@ namespace ROI
 
         }
 
+
         private void lblOutput_Click(object sender, EventArgs e)
         {
 
@@ -58,8 +73,8 @@ namespace ROI
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
             //output trackbar value to label
-            PropertyCost_label.Text = ( '$' + trackBar2.Value.ToString("0,00.00"));
-             PCost = trackBar2.Value;
+            PropertyCost_label.Text = ('$' + trackBar2.Value.ToString("0,00.00"));
+            PCost = trackBar2.Value;
         }
 
         private void ClosingCost_box_TextChanged(object sender, EventArgs e)
@@ -83,7 +98,7 @@ namespace ROI
             {
                 AmortYears = Convert.ToInt32(AmortYears_box.Text);
             }
-            
+
         }
 
         private void GrossRentalIncome_label_Click(object sender, EventArgs e)
@@ -95,10 +110,10 @@ namespace ROI
         {
             //output trackbar value to label
             DownPayment_label.Text = trackBar1.Value.ToString("00");
-             DPayment = trackBar1.Value;
-            
-            
-            
+            DPayment = trackBar1.Value;
+
+
+
 
         }
 
@@ -117,16 +132,76 @@ namespace ROI
             int Mortgage = AmortYears;
             MortgagePrincipal_label.Text = Mortgage.ToString();
             //assign values to variables
-            MonthlyRent = Convert.ToInt32(MonthlyRent_box.Text);    
+            MonthlyRent = Convert.ToInt32(MonthlyRent_box.Text);
             Vacancy = Convert.ToInt32(Vacancy_box.Text);
             //calculations for gross rental income
-            GrossRentalIncome = (MonthlyRent * 12* (1-(Vacancy/100)));
+            GrossRentalIncome = (MonthlyRent * 12 * (1 - (Vacancy / 100)));
             //print the output
             GrossRentalIncome_label.Text = GrossRentalIncome.ToString();
             //ROI calculations
             DPaymentAmount = (DPayment / PCost) * 100;
+            PropertyTax = Convert.ToInt32(PropertyTax_box.Text);
+            InsuranceExpenses = Convert.ToInt32(InsuranceExpenses_box.Text);
+            MaintenanceExpenses = Convert.ToInt32(MaintenanceExpenses_box.Text);
+            OtherExpenses = Convert.ToInt32(OtherExpenses_box.Text);
+            NetRentalIncome = GrossRentalIncome - (PropertyTax + InsuranceExpenses + MaintenanceExpenses + OtherExpenses);
+            NetRentalIncome_label.Text = NetRentalIncome.ToString();
             //print output
-            ROI_label.Text = (GrossRentalIncome / (ClosingCost + DPaymentAmount)).ToString()+ "." + (GrossRentalIncome % (ClosingCost + DPaymentAmount)).ToString();
+            ROI_label.Text = (NetRentalIncome / (ClosingCost + DPaymentAmount)).ToString() + "." + (NetRentalIncome % (ClosingCost + DPaymentAmount)).ToString();
+            ROI = Convert.ToDouble(ROI_label.Text);
+
+            if (ROI < 1)
+            {
+
+                using (var g = Graphics.FromImage(pictureBox1.Image))
+                {
+                    g.DrawLine(new Pen(Color.Red, 10), 110, 110, 180, 180);
+                     
+
+                    g.DrawLine(new Pen(Color.Red, 10),110, 180, 180, 110);
+                    pictureBox1.Refresh();
+
+                }
+                
+                
+
+            }
+            else if (ROI > 1 && ROI < 4)
+            {
+                using (var g = Graphics.FromImage(pictureBox1.Image))
+                {
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                    70, 150, 110, 180);
+
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                        110, 180, 180, 100);
+                    pictureBox1.Refresh();
+
+                }
+                
+            }
+            else
+            {
+                using (var g = Graphics.FromImage(pictureBox1.Image))
+                {
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                      70, 150, 110, 180);
+
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                        110, 180, 180, 100);
+
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                    170, 150, 210, 180);
+
+                    g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
+                        210, 180, 280, 100);
+                    pictureBox1.Refresh();
+                    
+                }
+
+
+
+            }
         }
     }
 }

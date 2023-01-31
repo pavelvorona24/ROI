@@ -61,8 +61,19 @@
             this.label19 = new System.Windows.Forms.Label();
             this.ClosingCost_box = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.MaintenanceExpenses_box = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.InsuranceExpenses_box = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.PropertyTax_box = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.OtherExpenses_box = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -191,11 +202,15 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = global::ROI.Properties.Resources.calculator_icon;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.Location = new System.Drawing.Point(45, 436);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 62);
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(287, 62);
             this.button1.TabIndex = 18;
             this.button1.Text = "Calculate";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -317,9 +332,9 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(920, 345);
+            this.label16.Location = new System.Drawing.Point(929, 444);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(290, 86);
+            this.label16.Size = new System.Drawing.Size(276, 86);
             this.label16.TabIndex = 31;
             this.label16.Text = "GRAPHICS";
             // 
@@ -380,11 +395,112 @@
             this.label17.TabIndex = 36;
             this.label17.Text = "Closing Cost:";
             // 
+            // MaintenanceExpenses_box
+            // 
+            this.MaintenanceExpenses_box.Location = new System.Drawing.Point(705, 444);
+            this.MaintenanceExpenses_box.Multiline = true;
+            this.MaintenanceExpenses_box.Name = "MaintenanceExpenses_box";
+            this.MaintenanceExpenses_box.Size = new System.Drawing.Size(101, 27);
+            this.MaintenanceExpenses_box.TabIndex = 43;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(422, 441);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(277, 27);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "Maintenance Expenses:";
+            // 
+            // InsuranceExpenses_box
+            // 
+            this.InsuranceExpenses_box.Location = new System.Drawing.Point(661, 410);
+            this.InsuranceExpenses_box.Multiline = true;
+            this.InsuranceExpenses_box.Name = "InsuranceExpenses_box";
+            this.InsuranceExpenses_box.Size = new System.Drawing.Size(157, 28);
+            this.InsuranceExpenses_box.TabIndex = 41;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(422, 411);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(244, 27);
+            this.label21.TabIndex = 40;
+            this.label21.Text = "Insurance Expenses:";
+            // 
+            // PropertyTax_box
+            // 
+            this.PropertyTax_box.Location = new System.Drawing.Point(575, 377);
+            this.PropertyTax_box.Multiline = true;
+            this.PropertyTax_box.Name = "PropertyTax_box";
+            this.PropertyTax_box.Size = new System.Drawing.Size(193, 27);
+            this.PropertyTax_box.TabIndex = 39;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(422, 377);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(156, 27);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "Property Tax:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Impact", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(499, 300);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(269, 28);
+            this.label23.TabIndex = 44;
+            this.label23.Text = "Annual Operating Expenses";
+            // 
+            // OtherExpenses_box
+            // 
+            this.OtherExpenses_box.Location = new System.Drawing.Point(510, 477);
+            this.OtherExpenses_box.Multiline = true;
+            this.OtherExpenses_box.Name = "OtherExpenses_box";
+            this.OtherExpenses_box.Size = new System.Drawing.Size(165, 27);
+            this.OtherExpenses_box.TabIndex = 46;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(422, 474);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(82, 27);
+            this.label24.TabIndex = 45;
+            this.label24.Text = "Other:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(863, 256);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(394, 185);
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 510);
+            this.ClientSize = new System.Drawing.Size(1269, 513);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.OtherExpenses_box);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.MaintenanceExpenses_box);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.InsuranceExpenses_box);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.PropertyTax_box);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.ClosingCost_box);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.ROI_label);
@@ -423,6 +539,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +579,15 @@
         private Label label19;
         private TextBox ClosingCost_box;
         private Label label17;
+        private TextBox MaintenanceExpenses_box;
+        private Label label20;
+        private TextBox InsuranceExpenses_box;
+        private Label label21;
+        private TextBox PropertyTax_box;
+        private Label label22;
+        private Label label23;
+        private TextBox OtherExpenses_box;
+        private Label label24;
+        private PictureBox pictureBox1;
     }
 }
