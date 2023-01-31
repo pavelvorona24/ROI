@@ -6,7 +6,7 @@ namespace ROI
 {
     public partial class Form1 : Form
     {
-        //define global variables
+        //define global variables, and arrays
         public int PCost, ClosingCost, DPaymentAmount, PropertyTax, InsuranceExpenses, MaintenanceExpenses, OtherExpenses, DPayment, AmortYears, MonthlyRent, Vacancy, NetRentalIncome, GrossRentalIncome;
         public double MortgageRate, ROI;
         public string[] ROISumElements = new string[4] {"GrossRentalIncome", "Mortgage", " NetRentalIncome", "ROI"};
