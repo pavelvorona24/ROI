@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -8,7 +9,9 @@ namespace ROI
         //define global variables
         public int PCost, ClosingCost, DPaymentAmount, PropertyTax, InsuranceExpenses, MaintenanceExpenses, OtherExpenses, DPayment, AmortYears, MonthlyRent, Vacancy, NetRentalIncome, GrossRentalIncome;
         public double MortgageRate, ROI;
-
+        public string[] ROISumElements = new string[4] {"GrossRentalIncome", "Mortgage", " NetRentalIncome", "ROI"};
+        public string[] ROIElementsValue = new string[4];
+       
 
         public Form1()
         {
@@ -128,28 +131,53 @@ namespace ROI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //assign value to mortgage label and output calculation
+            //assign value to mortgage label, give array value and output calculation
             int Mortgage = AmortYears;
+            ROIElementsValue[1] = Mortgage.ToString();
             MortgagePrincipal_label.Text = Mortgage.ToString();
             //assign values to variables
             MonthlyRent = Convert.ToInt32(MonthlyRent_box.Text);
             Vacancy = Convert.ToInt32(Vacancy_box.Text);
             //calculations for gross rental income
             GrossRentalIncome = (MonthlyRent * 12 * (1 - (Vacancy / 100)));
+            ROIElementsValue[0] = GrossRentalIncome.ToString(); 
             //print the output
             GrossRentalIncome_label.Text = GrossRentalIncome.ToString();
-            //ROI calculations
+            
             DPaymentAmount = (DPayment / PCost) * 100;
             PropertyTax = Convert.ToInt32(PropertyTax_box.Text);
             InsuranceExpenses = Convert.ToInt32(InsuranceExpenses_box.Text);
             MaintenanceExpenses = Convert.ToInt32(MaintenanceExpenses_box.Text);
             OtherExpenses = Convert.ToInt32(OtherExpenses_box.Text);
             NetRentalIncome = GrossRentalIncome - (PropertyTax + InsuranceExpenses + MaintenanceExpenses + OtherExpenses);
+            ROIElementsValue[2] = NetRentalIncome.ToString();
             NetRentalIncome_label.Text = NetRentalIncome.ToString();
-            //print output
+            
+            //ROI calculations
             ROI_label.Text = (NetRentalIncome / (ClosingCost + DPaymentAmount)).ToString() + "." + (NetRentalIncome % (ClosingCost + DPaymentAmount)).ToString();
             ROI = Convert.ToDouble(ROI_label.Text);
+            ROIElementsValue[3] = ROI.ToString();
+            
+            
 
+            //array to show ROI summary, just for the purpose of assignment requirements 
+            int i;
+            i = 0;
+            lblOutput.Items.Clear();
+            while (i < 4)
+            {
+
+                
+               
+                   
+                    lblOutput.Items.Add(ROISumElements[i] + ": " + ROIElementsValue[i] + "\r\n");
+                    
+                   
+                
+                i = i + 1;
+            }
+
+            //use if, else if, else to display images corresponding to given parameters
             if (ROI < 1)
             {
 
@@ -160,6 +188,7 @@ namespace ROI
 
                     g.DrawLine(new Pen(Color.Red, 10),110, 180, 180, 110);
                     pictureBox1.Refresh();
+                    g.Clear(Color.White);
 
                 }
                 
@@ -176,6 +205,7 @@ namespace ROI
                     g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
                         110, 180, 180, 100);
                     pictureBox1.Refresh();
+                    g.Clear(Color.White);
 
                 }
                 
@@ -196,7 +226,7 @@ namespace ROI
                     g.DrawLine(new Pen(Color.FromArgb(50, 205, 50), 10),
                         210, 180, 280, 100);
                     pictureBox1.Refresh();
-                    
+                    g.Clear(Color.White);
                 }
 
 

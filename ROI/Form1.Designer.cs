@@ -71,6 +71,7 @@
             this.OtherExpenses_box = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblOutput = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -486,11 +487,21 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
+            // lblOutput
+            // 
+            this.lblOutput.FormattingEnabled = true;
+            this.lblOutput.ItemHeight = 20;
+            this.lblOutput.Location = new System.Drawing.Point(863, 256);
+            this.lblOutput.Name = "lblOutput";
+            this.lblOutput.Size = new System.Drawing.Size(188, 84);
+            this.lblOutput.TabIndex = 48;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1269, 513);
+            this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.OtherExpenses_box);
             this.Controls.Add(this.label24);
@@ -589,5 +600,6 @@
         private TextBox OtherExpenses_box;
         private Label label24;
         private PictureBox pictureBox1;
+        private ListBox lblOutput;
     }
 }
